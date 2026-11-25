@@ -1,0 +1,8 @@
+Flask
+scikit-learn
+joblib
+openpyxl
+reportlab
+pypdf
+python-docx
+python-pptx

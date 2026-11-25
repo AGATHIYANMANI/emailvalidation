@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spam Email Detection System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Spam Email Detection System</h1>
+
+    <p class="subtitle">
+        AI-Based Email Security and Verification
+    </p>
+
+    <form id="emailForm">
+
+        <label>Person Name</label>
+        <input type="text"
+               name="person_name"
+               placeholder="Enter your name"
+               required>
+
+        <label>Email Address</label>
+        <input type="email"
+               name="email_address"
+               placeholder="Enter your email address"
+               required>
+
+        <h3>Choose Email Input Method</h3>
+
+        <div class="options">
+
+            <button type="button"
+                    id="textTab"
+                    class="tab active">
+                Enter Text
+            </button>
+
+            <button type="button"
+                    id="fileTab"
+                    class="tab">
+                Upload File
+            </button>
+
+        </div>
+
+        <div id="textSection">
+
+            <label>Email Content</label>
+
+            <textarea name="email_text"
+                      id="emailText"
+                      placeholder="Paste your email content here..."></textarea>
+
+        </div>
+
+        <div id="fileSection" class="hidden">
+
+            <label>Upload File</label>
+
+            <div class="file-drop-zone" id="fileDropZone">
+                <div class="file-icons">
+                    <span class="file-icon pdf">PDF</span>
+                    <span class="file-icon word">DOC</span>
+                    <span class="file-icon ppt">PPT</span>
+                    <span class="file-icon txt">TXT</span>
+                    <span class="file-icon eml">EML</span>
+                </div>
+                <p class="drop-text">Drag &amp; drop your file here, or</p>
+                <label class="browse-btn" for="emailFile">Browse File</label>
+                <input type="file"
+                       name="email_file"
+                       id="emailFile"
+                       accept=".txt,.eml,.pdf,.docx,.doc,.pptx,.ppt">
+                <p class="file-name-display" id="fileNameDisplay">No file chosen</p>
+            </div>
+
+            <p class="hint">
+                Supported: PDF, Word (.docx/.doc), PowerPoint (.pptx/.ppt), TXT, EML
+            </p>
+
+        </div>
+
+        <button type="submit" id="submitBtn">
+            Analyze Email
+        </button>
+
+    </form>
+
+    <div id="result" class="result hidden">
+
+        <h2>Analysis Result</h2>
+
+        <h3 id="prediction"></h3>
+
+        <p>
+            Model Test Accuracy:
+            <strong id="accuracy"></strong>
+        </p>
+
+        <h3>Spam-Associated Words</h3>
+
+        <div id="words"></div>
+
+        <a id="downloadBtn"
+           class="download hidden"
+           href="#">
+            Download PDF Report
+        </a>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
